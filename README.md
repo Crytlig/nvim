@@ -32,3 +32,9 @@ git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
 ```shell
 nvim
 ```
+
+
+## Note to self
+
+clone as submodule
+```git clone --recursive https://github.com/user/repo```
