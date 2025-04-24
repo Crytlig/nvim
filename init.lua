@@ -1,5 +1,8 @@
--- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
--- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+-- This file bootstraps Lazy.nvim and conditionally loads configurations based on environment
+-- Check if running inside VSCode
+local is_vscode = vim.g.vscode
+
+-- Bootstrap lazy.nvim
 local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
@@ -15,5 +18,11 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
-require "lazy_setup"
-require "polish"
+-- Load appropriate configuration based on environment
+if is_vscode then
+  print("VSCode")
+else
+  -- Regular Neovim configuration
+  require "lazy_setup"         -- Your existing Neovim plugin configuration
+  require "polish"            -- Your existing Neovim settings
+end
