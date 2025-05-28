@@ -22,6 +22,9 @@ return {
           ["<Leader>b"] = { desc = "Buffers" },
           ["<Leader>|"] = {desc = "Horozontal pane split", "<cmd>split<cr>"},
           ["<Leader>\\"] = {desc = "Vertical pane split", "<cmd>vsplit<cr>"},
+          ["<Leader>e"] = {desc = "Oil", "<cmd>Oil --float<cr>"},
+          -- vim.keymaps.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+
           -- ["<Leader>tt"] = {"<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle Terminal"},
           -- quick save
           -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
