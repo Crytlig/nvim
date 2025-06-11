@@ -23,6 +23,6 @@ if is_vscode then
   print("VSCode")
 else
   -- Regular Neovim configuration
-  require "lazy_setup"         -- Your existing Neovim plugin configuration
-  require "polish"            -- Your existing Neovim settings
+  require "lazy_setup"
+  require "polish"
 end
