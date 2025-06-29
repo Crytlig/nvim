@@ -3,26 +3,27 @@ return {
   opts = function(_, opts)
     local status = require("astroui.status")
     -- Set codeium status
-    local codeium_status = {
-      init = function(self)
-        self.status = vim.api.nvim_call_function("codeium#GetStatusString", {})
-      end,
-      provider = function(self)
-          return "󰚩 " .. self.status
-      end,
-
-      hl = function(self)
-        if self.status == "OFF" then
-          return { fg = "red" }
-        else
-          return { fg = "green", bg = "bg" }
-        end
-      end,
-
-      update = { "CursorHold", "InsertEnter", "InsertLeave", "CursorMoved" }
-    }
+    -- local codeium_status = {
+    --   init = function(self)
+    --     self.status = vim.api.nvim_call_function("codeium#GetStatusString", {})
+    --   end,
+    --   provider = function(self)
+    --       return "󰚩 " .. self.status
+    --   end,
+    --
+    --   hl = function(self)
+    --     if self.status == "OFF" then
+    --       return { fg = "red" }
+    --     else
+    --       return { fg = "green", bg = "bg" }
+    --     end
+    --   end,
+    --
+    --   update = { "CursorHold", "InsertEnter", "InsertLeave", "CursorMoved" }
+    -- }
     opts.statusline = { -- statusline
       hl = { fg = "fg", bg = "bg" },
+      -- codeium_status,
       status.component.mode({ mode_text = { padding = { left = 1, right = 1} } }),
       status.component.git_branch(),
       status.component.file_info(),
@@ -31,7 +32,6 @@ return {
       status.component.fill(),
       status.component.cmd_info(),
       status.component.fill(),
-      codeium_status,
       status.component.lsp(),
       status.component.virtual_env(),
       status.component.treesitter(),
